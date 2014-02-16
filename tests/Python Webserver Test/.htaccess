@@ -1,0 +1,4 @@
+RewriteEngine on
+AddHandler cgi-script .py
+Options +ExecCGI
+DirectoryIndex index.py
