@@ -4,7 +4,7 @@ Intro
 -----
 L'idée est de créer une histoire dépendante des choix et actions de l'utilisateur. 
 Cela correspond à un enchaînement de tableaux où l'on vous propose plusieurs solutions, vos choix
-vous meneront alors vers une voix paisible, à un combat, à reculer ou encore à votre mort.
+vous meneront alors vers une voie paisible, à un combat, à reculer ou encore à votre mort.
 L'utilisateur choisit son nom de joueur (et éventuellement sont genre) au début et son score sera stocké dans une 
 base donnée. Autrement dit ce programme sera relié a une base de donnée permettant d'appeler les différentes fonctions de 
 choix, de tableaux et d'ennemis.
