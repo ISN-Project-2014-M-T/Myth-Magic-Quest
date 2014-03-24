@@ -1,0 +1,66 @@
+Création du système de combat Python
+------------------------------------
+import random
+
+def Aléa():
+    r = random.randint(1,6)
+    h = random.randint(1,10)
+    if h==7:
+        u = 5
+    elif u = 1
+    return (r, u)
+def CStats():
+    life = 5000 #Vie restante du joueur à fournir
+    a = Aléa(r)
+    b = Aléa(r)
+    c = Aléa(r)
+    crit = Aléa(u)
+    total= (x+y+z)*10*crit
+
+def MStats():
+    x = Aléa(r)
+    y = Aléa(r)
+    z = Aléa(r)
+    lv = Level(n)
+    pv = Level(v)
+    crit = Aléa(u)
+    taux = Level(t)
+    total= (x+y+z)*10*taux*crit
+    
+def Level():
+    zone= 5 #zone de tableaux actuel à fournir
+    if zone==5:
+        n=boss1
+        v=1000
+        t=0.40
+    elif zone==10:
+        n=boss2
+        v=2000
+        t=0.60
+    elif zone==15:
+        n=boss3
+        v=3000
+        t=0.80
+    elif zone==20:
+        n=boss4
+        v=4000
+        t=1
+    elif zone<5:
+        n=1
+        v=100
+        t=0.20
+    elif 5<zone<10:
+        n=2
+        v=200
+        t=0.40
+    elif 10<zone<15:
+        n=3
+        v=300
+        t=0.60
+    elif 15<zone<20:
+        n=4
+        v=400
+        t=0.80
+    return(n, v, t)
+    
+    penser à gérer les doubles variables
