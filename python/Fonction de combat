@@ -5,62 +5,85 @@ import random
 def Aléa():
     r = random.randint(1,6)
     h = random.randint(1,10)
+    u = 1
     if h==7:
         u = 5
-    elif u = 1
     return (r, u)
-def CStats():
-    life = 5000 #Vie restante du joueur à fournir
-    a = Aléa(r)
-    b = Aléa(r)
-    c = Aléa(r)
-    crit = Aléa(u)
-    total= (x+y+z)*10*crit
-
-def MStats():
-    x = Aléa(r)
-    y = Aléa(r)
-    z = Aléa(r)
-    lv = Level(n)
-    pv = Level(v)
-    crit = Aléa(u)
-    taux = Level(t)
-    total= (x+y+z)*10*taux*crit
+def Stats():
+    a, crit = Aléa()
+    b, crit = Aléa()
+    c, crit = Aléa()
+    total = (a+b+c)*10*crit
+    x, crit = Aléa()
+    y, crit = Aléa()
+    z, crit = Aléa()
+    total2 = (x+y+z)*10*taux*crit
+    result1 = PlayerLife - total2
+    result2 = pv - total
+    return(crit, a, b, c, x, y, z, total, total2, result1, result2)
     
 def Level():
     zone= 5 #zone de tableaux actuel à fournir
     if zone==5:
-        n=boss1
+        n='boss1'
         v=1000
         t=0.40
     elif zone==10:
-        n=boss2
+        n='boss2'
         v=2000
         t=0.60
     elif zone==15:
-        n=boss3
+        n='boss3'
         v=3000
         t=0.80
     elif zone==20:
-        n=boss4
+        n='boss4'
         v=4000
         t=1
     elif zone<5:
-        n=1
+        n='Lv1'
         v=100
         t=0.20
     elif 5<zone<10:
-        n=2
+        n='Lv2'
         v=200
         t=0.40
     elif 10<zone<15:
-        n=3
+        n='Lv3'
         v=300
         t=0.60
     elif 15<zone<20:
-        n=4
+        n='Lv4'
         v=400
         t=0.80
     return(n, v, t)
+#Début du programme de combat
+PlayerLife = 5000 #fournir cette valeur à chasue début de tableau et chaque combat
+lv, pv, taux = Level() #définit l'adversaire
+while pv>0 and PlayerLife>0 :
+    critic, dé1, dé2, dé3, dé4, dé5 ,dé6, damage1, damage2, Newlife1, Newlife2 = Stats()
+    print("Player 1", "           Enemy ", lv)
+    print("Pv : ", PlayerLife, "         Pv : ", pv)
+    if critic == 1:
+        print("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1)
+        print("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2)
+    elif critic == 5:
+        print("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1, "Cout Critique!!!")
+        print("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2, "Cout Critique!!!")
+    print("")
+    print("")
+    PlayerLife = Newlife1
+    pv = Newlife2
+if pv <= 0:
+    pv = 0
+    print("Player 1", "           Enemy ", lv)
+    print("Pv : ", PlayerLife, "         Pv : ", pv)
+    print("YOU WIN!")
+elif PlayerLife <= 0:
+    PlayerLife = 0
+    print("Player 1", "           Enemy ", lv)
+    print("Pv : ", PlayerLife, "         Pv : ", pv)
+    print("YOU LOSE!")
     
-    penser à gérer les doubles variables
+
+Revoir les critiques
