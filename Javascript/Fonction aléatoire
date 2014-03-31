@@ -1,0 +1,6 @@
+Création d'une fonction aléatoire Javascript
+
+============================================
+
+var r = var nb = Math.floor(Math.random() * 6);
+var h = var nb = Math.floor(Math.random() * 10);
