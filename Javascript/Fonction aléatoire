@@ -1,5 +1,5 @@
 Création d'une fonction aléatoire Javascript
-############################################
+============================================
 <script type="text/javascript">
 
 var r = var nb = Math.floor(Math.random() * 6);
