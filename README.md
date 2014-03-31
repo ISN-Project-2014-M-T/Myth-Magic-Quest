@@ -12,4 +12,4 @@ Pour cela vous devrez mener des combats épiques et tous vos choix seont précie
 
 Coding Part
 ============
-This game is code in Python with Django 1.6.
+This game is code in Python with Django 1.4.
