@@ -65,32 +65,33 @@ function Level()
     return(n, v, t);
 }
 #Début du programme de combat
-var PlayerLife = 5000 #fournir cette valeur à chasue début de tableau et chaque combat
-var lv, pv, taux = Level() #définit l'adversaire
-while(pv>0 || PlayerLife>0) :
-    var critic, dé1, dé2, dé3, dé4, dé5 ,dé6, damage1, damage2, Newlife1, Newlife2 = Stats()
-    print("Player 1", "           Enemy ", lv)
-    print("Pv : ", PlayerLife, "         Pv : ", pv)
-    if critic == 1:
-        print("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1)
-        print("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2)
-    elif critic == 5:
-        print("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1, "Cout Critique!!!")
-        print("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2, "Cout Critique!!!")
-    print("")
-    print("")
-    PlayerLife = Newlife1
-    pv = Newlife2
-if pv <= 0:
-    pv = 0
-    print("Player 1", "           Enemy ", lv)
-    print("Pv : ", PlayerLife, "         Pv : ", pv)
-    print("YOU WIN!")
-elif PlayerLife <= 0:
-    PlayerLife = 0
-    print("Player 1", "           Enemy ", lv)
-    print("Pv : ", PlayerLife, "         Pv : ", pv)
-    print("YOU LOSE!")
+var PlayerLife = 5000; #fournir cette valeur à chasue début de tableau et chaque combat
+var lv, pv, taux = Level(); #définit l'adversaire
+while(pv>0 || PlayerLife>0)
+    var critic, dé1, dé2, dé3, dé4, dé5 ,dé6, damage1, damage2, Newlife1, Newlife2 = Stats();
+    alert("Player 1", "           Enemy ", lv);
+    alert("Pv : ", PlayerLife, "         Pv : ", pv);
+    if(critic == 1)
+        alert("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1)
+        alert("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2)
+    else if(critic == 5)
+        alert("Attack Damage : ",dé1, " ",dé2, " ", dé3, " =>", damage1, "Cout Critique!!!");
+        alert("Damages Received : ",dé4, " ",dé5, " ", dé6, " =>", damage2, "Cout Critique!!!");
+    alert("");
+    alert("");
+    var PlayerLife = Newlife1;
+    var pv = Newlife2;
+if(pv <= 0)
+    var pv = 0;
+    alert("Player 1", "           Enemy ", lv);
+    alert("Pv : ", PlayerLife, "         Pv : ", pv);
+    alert("YOU WIN!");
+else if(PlayerLife <= 0)
+    var PlayerLife = 0;
+    alert("Player 1", "           Enemy ", lv;)
+    alert("Pv : ", PlayerLife, "         Pv : ", pv);
+    alert("YOU LOSE!");
 <script>
 
-finir la modif
+(document.write)
+need tests
