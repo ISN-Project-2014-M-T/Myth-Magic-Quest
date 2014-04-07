@@ -12,18 +12,18 @@ function Aléa()
     {
         var u = 5
     }
-    return (r, u)
+    return [r, u]
 }
 function Stats()
 {
-    var a, crit = Aléa();
-    var b, crit = Aléa();
-    var c, crit = Aléa();
-    var total = (a+b+c)*10*crit;
-    var x, crit = Aléa();
-    var y, crit = Aléa();
-    var z, crit = Aléa();
-    var total2 = (x+y+z)*10*taux*crit;
+    var a = Aléa();
+    var b = Aléa();
+    var c = Aléa();
+    var total = (a.[0]+b.[0]+c.[0])*10*a.[1];
+    var x = Aléa();
+    var y = Aléa();
+    var z = Aléa();
+    var total2 = (x.[0]+y.[0]+z.[0])*10*taux*a.[1];
     var result1 = PlayerLife - total2;
     var result2 = pv - total;
     return(crit, a, b, c, x, y, z, total, total2, result1, result2);
