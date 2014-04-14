@@ -1,8 +1,6 @@
 Fonction de combat javascript
 -----------------------------
 
-<script type="text/javascript">
-
 function Aléa()
 {
     var r = Math.floor(Math.random() * 6);
