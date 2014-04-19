@@ -1,3 +1,5 @@
+<head>
+
 <script type="text/javascript">
 
 function Alea()
@@ -7,13 +9,8 @@ function Alea()
     return Math.floor(random);
 }
 
-var r = Alea();
-var u = Alea();
-
-
-function Level()
+function Level(zone)
 {
-    var zone= 5;
     if(zone==5)
     {
         var n='boss1';
@@ -65,10 +62,28 @@ function Level()
     return[n, v, t];
 }
 
-var n = Level()
-var life = n[0]
 
-alert(life);
+function combat(zone,life)
+{
+var zoning = Level(zone)
+var lifemonster = zoning[0]
 
+alert(lifemonster);
+
+var r = Alea();
+var u = Alea();
+
+
+}
 
 </script>
+
+     </head>
+     <body>
+        
+          <p>
+               <a href="#" onclick="javascript:combat(7,650)">Lancer le combat</a><br />
+          </p>
+                
+     </body>
+</html>
