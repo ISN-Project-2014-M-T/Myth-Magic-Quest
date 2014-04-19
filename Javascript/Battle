@@ -1,6 +1,8 @@
 Fonction de combat javascript
 -----------------------------
 
+<script type="text/javascript">
+
 function Aléa()
 {
     var r = Math.floor(Math.random() * 6);
@@ -118,7 +120,7 @@ else if(PlayerLife <= 0)
     document.write("Pv : " + PlayerLife + "         Pv : " + pv);
     document.write("YOU LOSE!");
 }
-<script>
+</script>
 
 (document.write)
 need tests
