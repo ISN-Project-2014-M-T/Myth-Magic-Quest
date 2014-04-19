@@ -65,14 +65,74 @@ function Level(zone)
 
 function combat(zone,life)
 {
+
+// Attribution des variables :
+
+//Stats du monstre
 var zoning = Level(zone)
-var lifemonster = zoning[0]
+var monster = zoning[0]
+var pv = zoning[1]
+var fail = zoning[2]
 
-alert(lifemonster);
-
+//Lancer de dés et coup critique
 var r = Alea();
-var u = Alea();
+var h = Alea();
 
+if (h==7)
+{
+    var u = 5;
+}
+else var u = 1;
+
+
+    // Stats du joueur
+    var PlayerLife = 5000;
+    var a = Alea();
+    var b = Alea();
+    var c = Alea();
+    var total = (a+b+c)*10*a;
+    var x = Alea();
+    var y = Alea();
+    var z = Alea();
+    var total2 = (x+y+z)*10*fail*a;
+    var result1 = PlayerLife - total2;
+    var result2 = pv - total;
+
+
+
+while(pv>0 || PlayerLife>0)
+{
+    alert("Player 1" + "           Enemy " + monster);
+    alert("Pv : " + PlayerLife, "         Pv : " + pv);
+    if(u == 1)
+    {
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2);
+    }
+    else if(u == 5)
+    {
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + "Cout Critique!!!");
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2 + "Cout Critique!!!");
+    }
+    alert("");
+    alert("");
+    var PlayerLife = result1;
+    var pv = result2;
+}
+if(pv <= 0)
+{
+    var pv = 0;
+    alert("Player 1" + "           Enemy " + monster);
+    alert("Pv : " + PlayerLife + "         Pv : " + pv);
+    alert("YOU WIN!");
+}
+else if(PlayerLife <= 0)
+{
+    var PlayerLife = 0;
+    alert("Player 1" + "           Enemy " + monster);
+    alert("Pv : " + PlayerLife + "         Pv : " + pv);
+    alert("YOU LOSE!");
+}
 
 }
 
