@@ -5,8 +5,8 @@ Fonction de combat javascript
 
 function Aléa()
 {
-    var r = Math.floor(Math.random() * 6);
-    var h = Math.floor(Math.random() * 10);
+    var r = Math.floor((Math.random() * 6) + 1);
+    var h = Math.floor((Math.random() * 10) + 1);
     var u = 1;
     if (h==7)
     {
@@ -122,5 +122,3 @@ else if(PlayerLife <= 0)
 }
 </script>
 
-(document.write)
-need tests
