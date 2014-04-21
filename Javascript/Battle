@@ -133,15 +133,7 @@ while(pv>0 && PlayerLife>0)
 }
 </script>
 
-  </head>
-     <body>
-        
-          <p>
-               <a href="#" onclick="javascript:Combat()">Lancer le combat</a><br />
-          </p>
-
-     </body>
-</html>
+</head>
      <body>
         
           <p>
