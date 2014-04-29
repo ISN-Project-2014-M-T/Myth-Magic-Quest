@@ -9,12 +9,12 @@ function Combat()
 function Critical()
 {
     var h = Math.floor((Math.random() * 10) + 1);
-    var u = 1;
+    var ulti = 1;
     if (h==7)
     {
-        var u = 5;
+        var ulti = 5;
     }
-    return u
+    return ulti
 }
 
 function Dé()
@@ -22,22 +22,6 @@ function Dé()
     var random = Math.floor((Math.random() * 6) + 1);
 
     return random
-}
-function Stats()
-{
-    var a = Dé();
-    var b = Dé();
-    var c = Dé();
-    var crit1 = Critical();
-    var total = (a+b+c)*10*crit1;
-    var x = Dé();
-    var y = Dé();
-    var z = Dé();
-    var crit2 = Critical();
-    var total2 = (x+y+z)*10*Enemy[2]*crit2;
-    var result1 = PlayerLife - total2;
-    var result2 = pv - total;
-    return [crit1, crit2, a, b, c, x, y, z, total, total2, result1, result2]
 }
     
 function Level()
@@ -99,22 +83,43 @@ var Enemy = Level();
 var pv = Enemy[1];
 while(pv>0 && PlayerLife>0)
 {
-    var stats = Stats();
+    var a = Dé();
+    var b = Dé();
+    var c = Dé();
+    var crit1 = Critical();
+    var total = (a+b+c)*10*crit1;
+    var x = Dé();
+    var y = Dé();
+    var z = Dé();
+    var crit2 = Critical();
+    var total2 = (x+y+z)*10*Enemy[2]*crit2;
+    var result1 = PlayerLife - total2;
+    var result2 = pv - total;
     alert("Player 1" + "           Enemy " + Enemy[0]);
     alert("Pv : " + PlayerLife + "         Pv : " + pv);
-    if(stats[0] == 1)
+    if(crit1 == 1 && crit2 == 1)
     {
-        alert("Attack Damage : " + stats[2] + " " + stats[3] + " " + stats[4] + " =>" + stats[8]);
-        alert("Damages Received : " + stats[5] + " " + stats[6] + " " + stats[7] + " =>" + stats[9]);
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2);
     }
-    else if(stats[1] == 5)
+    else if(crit1 == 5 && crit2 == 5)
     {
-        alert("Attack Damage : " + stats[2] + " " + stats[3] + " " + stats[4] + " =>" + stats[8] + "Cout Critique!!!");
-        alert("Damages Received : " + stats[5] + " " + stats[6] + " " + stats[7] + " =>" + stats[9] + "Cout Critique!!!");
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + " Coup Critique!!!");
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2 + " Coup Critique!!!");
+    }
+    else if(crit1 == 5)
+    {
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + "Coup Critique!!!");
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2);
+    }
+    else if(crit2== 5)
+    {
+        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
+        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2 + "Coup Critique!!!");
     }
     alert("");
-    var PlayerLife = stats[10];
-    var pv = stats[11];
+    var PlayerLife = result1;
+    var pv = result2;
 }
   if(pv <= 0)
   {
