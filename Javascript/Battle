@@ -260,11 +260,12 @@ while(pv>0 && PlayerLife>0)
         }
     }
 }
-    createCookie("username", Joueur,3000)
-    createCookie("life", PLayerLife,3000)
-    createCookie("lieu", zone,3000)
-    createCookie("job", classe,3000)
-    createCookie("item", potion,3000)
+    createCookie("username", Joueur,30);
+    createCookie("life", PLayerLife,30);
+    createCookie("lieu", zone,30);
+    createCookie("job", classe,30);
+    createCookie("item", potion,30);
+    createCookie("arme",weapon,30);
 }
 </script>
 
