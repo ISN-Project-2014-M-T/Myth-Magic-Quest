@@ -11,7 +11,7 @@ createCookie("life",5000,30);
 createCookie("lieu",10,30);
 createCookie("job","thief",30);
 createCookie("item",3,30);
-createCookie("arme",1,30)
+createCookie("arme",1,30);
 // ces creations de cookies n'existent que pour tester
 
 function createCookie(nom,valeur,exdays)
