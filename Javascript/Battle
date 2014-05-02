@@ -12,7 +12,7 @@ createCookie("lieu",10,30);
 createCookie("job","thief",30);
 createCookie("item",3,30);
 createCookie("arme",1,30)
-/ ces creations de cookies n'existent que pour tester
+// ces creations de cookies n'existent que pour tester
 
 function createCookie(nom,valeur,exdays)
 {
@@ -38,12 +38,13 @@ function fail(escape)
 {
     var chance = 0;
     if  (escape == 2)
-    }
+    {
         var e = Math.floor((Math.random() * 5) + 1);
         if (e == 3)
-        }
+        {
             var chance = 1
         }
+        
     }
     else if (escape == 1)
     {
@@ -68,7 +69,7 @@ function Critical()
     return ulti
 }
 
-function Dé()
+function De()
 {
     var random = Math.floor((Math.random() * 6) + 1);
 
@@ -174,23 +175,23 @@ while(pv>0 && PlayerLife>0)
             {
                 var PlayerLife = lifemax;
             }
-            alert(Vous vous êtes soigné);
+            alert("Vous vous êtes soigné");
         }
         else 
         {
-        alert(Votre soin à échoué);
+        alert("Votre soin à échoué");
         }
     }
     else if (choice == 1)
     {
-        var a = Dé();
-        var b = Dé();
-        var c = Dé();
+        var a = De();
+        var b = De();
+        var c = De();
         var crit1 = Critical();
         var total = (a+b+c)*10*crit1*power;
-        var x = Dé();
-        var y = Dé();
-        var z = Dé();
+        var x = De();
+        var y = De();
+        var z = De();
         var crit2 = Critical();
         var total2 = (x+y+z)*10*Enemy[2]*crit2;
         var result1 = PlayerLife - total2;
@@ -253,7 +254,7 @@ while(pv>0 && PlayerLife>0)
                 }
                 else 
                 {
-                    alert(GAME OVER);
+                    alert("GAME OVER");
                 }
             }
         }
@@ -275,5 +276,4 @@ while(pv>0 && PlayerLife>0)
           </p>
                 
      </body>
-
 
