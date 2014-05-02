@@ -129,6 +129,7 @@ var classe = getcookie("job");
 var PlayerLife = getcookie("life");
 var potion = getcookie("item");
 var zone = getcookie("lieu");
+var weapon = getcookie("arme")
 var Enemy = Level(zone);
 var pv = Enemy[1];
 if (classe == "mage")
@@ -149,6 +150,10 @@ else if (classe == "thief")
     var escape = 2;
     var lifemax = 5000;
 }
+if (weapon = 1)
+{
+    var power = power*5
+}
 while(pv>0 && PlayerLife>0)
 {
     var a = Dé();
@@ -165,36 +170,36 @@ while(pv>0 && PlayerLife>0)
     var result2 = pv - total;
     alert("Player 1" + "           Enemy " + Enemy[0]);
     alert("Pv : " + PlayerLife + "         Pv : " + pv);
-    dodge = fail()
+    var dodge = fail(escape);
     if (dodge == 1 && crit1 == 1)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
-        alert("You escape enemy's attack!!!");
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total);
+        alert("Vous avez évité l'attaque ennemie!!!");
     }
     else if (dodge == 1 && crit1 == 5)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + " Coup Critique!!!");
-        alert("You escape enemy's attack!!!");
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total + " Coup Critique!!!");
+        alert("Vous avez évité l'attaque ennemie!!!");
     }
     else if(crit1 == 1 && crit2 == 1)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
-        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2);
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total);
+        alert("Dommages reçus : " + x + " " + y + " " + z + " =>" + total2);
     }
     else if(crit1 == 5 && crit2 == 5)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + " Coup Critique!!!");
-        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2 + " Coup Critique!!!");
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total + " Coup Critique!!!");
+        alert("Dommages reçus : " + x + " " + y + " " + z + " =>" + total2 + " Coup Critique!!!");
     }
     else if(crit1 == 5)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total + "Coup Critique!!!");
-        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2);
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total + "Coup Critique!!!");
+        alert("Dommages reçus : " + x + " " + y + " " + z + " =>" + total2);
     }
     else if(crit2 == 5)
     {
-        alert("Attack Damage : " + a + " " + b + " " + c + " =>" + total);
-        alert("Damages Received : " + x + " " + y + " " + z + " =>" + total2 + "Coup Critique!!!");
+        alert("Dommages infligés : " + a + " " + b + " " + c + " =>" + total);
+        alert("Dommages reçus : " + x + " " + y + " " + z + " =>" + total2 + "Coup Critique!!!");
     }
     alert("");
     var PlayerLife = result1;
@@ -204,20 +209,20 @@ while(pv>0 && PlayerLife>0)
         var pv = 0;
         alert("Player 1" + "           Enemy " + Enemy[0]);
         alert("Pv : " + PlayerLife + "         Pv : " + pv);
-        alert("YOU WIN!");
+        alert("Vous avez gagné!");
     }
     else if(PlayerLife <= 0)
     {
         var PlayerLife = 0;
-        alert("Player 1" + "           Enemy " + Enemy[0]);
+        alert("Player 1" + "           Ennemi " + Enemy[0]);
         alert("Pv : " + PlayerLife + "         Pv : " + pv);
-        alert("YOU LOSE!");
+        alert("Vous êtes mort...");
     if (potion>0)
     {
-        if (confirm(Do you want to use a coninue?))
+        if (confirm("Voulez-vous utiliser un continue?"))
         {
-            Playerlife = lifemax;
-            potion = potion - 1;
+            var Playerlife = lifemax;
+            var potion = potion - 1;
         }
         else 
         {
