@@ -6,12 +6,15 @@ Fonction de combat javascript
 
 function Combat()
 {
-setcookie("username","Oden",30);
-setcookie("life",5000,30);
-setcookie("lieu",10,30);
-setcookie("job","thief",30);
-setcookie("item",3,30);
-function setcookie(nom,valeur,exdays);
+createCookie("username","Oden",30);
+createCookie("life",5000,30);
+createCookie("lieu",10,30);
+createCookie("job","thief",30);
+createCookie("item",3,30);
+createCookie("arme",1,30)
+/ ces creations de cookies n'existent que pour tester
+
+function createCookie(nom,valeur,exdays)
 {
 var d = new Date();
 d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -19,7 +22,7 @@ var expires = "expires="+d.toGMTString();
 document.cookie = nom+"="+valeur+"; "+expires;
 }
 
-function getcookie(nom)
+function getCookie(nom)
 {
 var name = nom + "=";
 var allcookies = document.cookie.split(';');
@@ -50,7 +53,7 @@ function fail(escape)
             var chance = 1;
         }
     }
-return chance
+    return chance
 }
 
 
@@ -124,12 +127,12 @@ function Level(zone)
     }
     return[n, v, t];
 }
-var Joueur = getcookie("username");
-var classe = getcookie("job");
-var PlayerLife = getcookie("life");
-var potion = getcookie("item");
-var zone = getcookie("lieu");
-var weapon = getcookie("arme")
+var Joueur = getCookie("username");
+var classe = getCookie("job");
+var PlayerLife = getCookie("life");
+var potion = getCookie("item");
+var zone = getCookie("lieu");
+var weapon = getCookie("arme")
 var Enemy = Level(zone);
 var pv = Enemy[1];
 if (classe == "mage")
@@ -150,14 +153,14 @@ else if (classe == "thief")
     var escape = 2;
     var lifemax = 5000;
 }
-if (weapon = 1)
+if (weapon == 1)
 {
     var power = power*5
 }
 while(pv>0 && PlayerLife>0)
 {
-    choice=0
-    while (x!=1 && x!=2)
+    var choice = 0;
+    while (choice!=1 && choice!=2)
     {
         var choice = prompt("Voulez-vous attaquer ou vous soigner?(1=attaquer, 2=soigner)");
     }
@@ -166,12 +169,16 @@ while(pv>0 && PlayerLife>0)
         var attempt = Math.floor((Math.random() * 5) + 1);
         if (attempt = 2 && PlayerLife<lifemax)
         {
-            var PlayerLife = PlayerLife + 1000
-            alert(Vous avez regagné 1000 points de vie)
+            var PlayerLife = PlayerLife + 1000;
+            if(Playerlife>lifemax)
+            {
+                var PlayerLife = lifemax;
+            }
+            alert(Vous vous êtes soigné);
         }
         else 
         {
-        alert(Votre soin à échoué)
+        alert(Votre soin à échoué);
         }
     }
     else if (choice == 1)
@@ -241,7 +248,7 @@ while(pv>0 && PlayerLife>0)
             {
                 if (confirm("Voulez-vous utiliser un continue?"))
                 {
-                    var Playerlife = lifemax;
+                    var PlayerLife = lifemax;
                     var potion = potion - 1;
                 }
                 else 
@@ -251,12 +258,12 @@ while(pv>0 && PlayerLife>0)
             }
         }
     }
-    setcookie("username", Joueur,3000)
-    setcookie("life", PLayerLife,3000)
-    setcookie("lieu", zone,3000)
-    setcookie("job", classe,3000)
-    setcookie("item", potion,3000)
 }
+    createCookie("username", Joueur,3000)
+    createCookie("life", PLayerLife,3000)
+    createCookie("lieu", zone,3000)
+    createCookie("job", classe,3000)
+    createCookie("item", potion,3000)
 }
 </script>
 
