@@ -31,9 +31,9 @@ for(var i=0; i<allcookies.length; i++)
 return "";
 }
 
-function fail()
+function fail(escape)
 {
-    var chance = 0
+    var chance = 0;
     if  (escape == 2)
     }
         var e = Math.floor((Math.random() * 5) + 1);
@@ -72,55 +72,55 @@ function Dé()
     return random
 }
     
-function Level()
+function Level(zone)
 {
     if(zone==5)
     {
-        var n='boss1';
-        var v=1000;
-        var t=0.40;
+        var n='Géant';
+        var v=1500;
+        var t=0.60;
     }
     else if(zone==10)
     {
-        var n='boss2';
-        var v=2000;
-        var t=0.60;
-    }
-    else if(zone==15)
-    {
-        var n='boss3';
+        var n='Hydre';
         var v=3000;
         var t=0.80;
     }
+    else if(zone==15)
+    {
+        var n='Dragon';
+        var v=5000;
+        var t=1;
+    }
     else if(zone==20)
     {
-        var n='boss4';
-        var v=4000;
-        var t=1;
+        var n='Abomination du néant';
+        var v=10000;
+        var t=1.5;
     }
     else if(zone<5)
     {
-        var n='Lv1';
-        var v=100;
-        var t=0.20;
+        var n='Vautour';
+        var v=500;
+        var t=0.40;
     }
     else if(5<zone<10)
     {
-        var n='Lv2';
-        var v=200;
-        var t=0.40;
+        var n='Gnome';
+        var v=1000;
+        var t=0.60;
     }
     else if(10<zone<15)
     {
-        var n='Lv3';
-        var v=300;
-        var t=0.60;
+        var n='Orc';
+        var v=1500;
+        var t=0.80;
     }
     else if (15<zone<20)
     {
-        var n='Lv4';
-        var v=400;
-        var t=0.80;
+        var n='Demon';
+        var v=2000;
+        var t=1;
     }
     return[n, v, t];
 }
@@ -129,7 +129,7 @@ var classe = getcookie("job");
 var PlayerLife = getcookie("life");
 var potion = getcookie("item");
 var zone = getcookie("lieu");
-var Enemy = Level();
+var Enemy = Level(zone);
 var pv = Enemy[1];
 if (classe == "mage")
 {
