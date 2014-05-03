@@ -197,7 +197,7 @@ while(pv>0 && PlayerLife>0)
         var total2 = (x+y+z)*10*Enemy[2]*crit2;
         var result1 = PlayerLife - total2;
         var result2 = pv - total;
-        alert(Joueur + "           Enemy " + Enemy[0]);
+        alert(Joueur + "           Enemie : " + Enemy[0]);
         alert("Pv : " + PlayerLife + "         Pv : " + pv);
         var dodge = fail(escape);
         if (dodge == 1 && crit1 == 1)
