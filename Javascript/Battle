@@ -11,7 +11,7 @@ function Combat()
 createCookie("username","Oden",30);
 createCookie("life",5000,30);
 createCookie("lieu",20,30);
-createCookie("job",mage,30);
+createCookie("job","mage",30);
 createCookie("item",2,30);
 createCookie("arme",0,30);
 
