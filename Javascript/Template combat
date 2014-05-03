@@ -177,15 +177,13 @@ while(pv>0 && PlayerLife>0)
         if(pv <= 0)
         {
             var pv = 0;
-            alert("Player 1" + "           Enemy " + Enemy[0]);
-            alert("Pv : " + PlayerLife + "         Pv : " + pv);
+            alert(Joueur + " : " + PlayerLife + "         Ennemi : " + pv + " pv");
             alert("Vous avez gagné!");
         }
         else if(PlayerLife <= 0)
         {
             var PlayerLife = 0;
-            alert("Player 1" + "           Ennemi " + Enemy[0]);
-            alert("Pv : " + PlayerLife + "         Pv : " + pv);
+            alert(Joueur + " : " + PlayerLife + "         Ennemi : " + pv + " pv");
             alert("Vous êtes mort...");
             if (potion>0)
             {
