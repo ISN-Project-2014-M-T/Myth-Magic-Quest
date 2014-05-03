@@ -227,10 +227,13 @@ while(pv>0 && PlayerLife>0)
                 else
                 {
                     alert("GAME OVER");
+                    location.href = "http://etienneduval.perso.neuf.fr/mythesfondateurs/images/Image%20de%20la%20mort%20marraine.jpg";
                 }
+            else
+            {
+                alert("GAME OVER");
+                location.href = "http://etienneduval.perso.neuf.fr/mythesfondateurs/images/Image%20de%20la%20mort%20marraine.jpg";
             }
-        alert("GAME OVER")
-        location.href = "http://etienneduval.perso.neuf.fr/mythesfondateurs/images/Image%20de%20la%20mort%20marraine.jpg";
         }
     }
 }
