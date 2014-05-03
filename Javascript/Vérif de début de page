@@ -1,0 +1,70 @@
+Vérification de la vie en début de page
+---------------------------------------
+<head>
+
+<script type="text/javascript">
+
+function Verif()
+{
+
+function createCookie(nom,valeur,exdays)
+{
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = nom+"="+valeur+"; "+expires;
+}
+
+function getCookie(nom)
+{
+var name = nom + "=";
+var allcookies = document.cookie.split(';');
+for(var i=0; i<allcookies.length; i++)
+  {
+  var c = allcookies[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+
+var PlayerLife = getCookie("life");
+var potion = getCookie("item");
+var classe = getCookie("job");
+if (classe == "mage")
+{
+    var lifemax = 5000;
+}
+else if (classe == "warrior")
+{
+    var lifemax = 10000;
+}
+else if (classe == "thief")
+{
+    var lifemax = 5000;
+}
+        if(PlayerLife <= 0)
+        {
+            var PlayerLife = 0;
+            alert("Vous êtes mort...");
+            if (potion>0)
+            {
+                if (confirm("Voulez-vous utiliser un continue?"))
+                {
+                    var PlayerLife = lifemax;
+                    var potion = potion - 1;
+                }
+                else
+                {
+                    alert("GAME OVER");
+                }
+        }
+createCookie("life", PLayerLife,30);
+createCookie("item", potion,30);
+createCookie("job", classe,30);
+}
+</script>
+
+
+</head>
+    <body onload="javascript:Verif()">
+    </body>
