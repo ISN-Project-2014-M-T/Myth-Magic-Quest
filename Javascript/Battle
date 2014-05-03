@@ -1,5 +1,7 @@
 Fonction de combat javascript
 -----------------------------
+<html>
+
 <head>
 
 <script type="text/javascript">
@@ -8,11 +10,10 @@ function Combat()
 {
 createCookie("username","Oden",30);
 createCookie("life",5000,30);
-createCookie("lieu",10,30);
-createCookie("job","thief",30);
-createCookie("item",3,30);
-createCookie("arme",1,30);
-// ces creations de cookies n'existent que pour tester
+createCookie("lieu",20,30);
+createCookie("job",mage,30);
+createCookie("item",2,30);
+createCookie("arme",0,30);
 
 function createCookie(nom,valeur,exdays)
 {
@@ -156,7 +157,7 @@ else if (classe == "thief")
 }
 if (weapon == 1)
 {
-    var power = power*5
+    var power = power*5;
 }
 while(pv>0 && PlayerLife>0)
 {
@@ -229,7 +230,6 @@ while(pv>0 && PlayerLife>0)
             alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
         }
-        alert("");
         var PlayerLife = result1;
         var pv = result2;
         if(pv <= 0)
@@ -277,4 +277,4 @@ while(pv>0 && PlayerLife>0)
           </p>
                 
      </body>
-
+</html>
