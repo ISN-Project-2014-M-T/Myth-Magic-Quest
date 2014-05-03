@@ -74,7 +74,7 @@ function Level(zone)
     {
         var n='Abomination du néant';
         var v=20000000;
-        var t=5;
+        var t=50;
     }
     else if(zone<5)
     {
