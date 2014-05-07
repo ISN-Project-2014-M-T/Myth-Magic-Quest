@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+<script type="text/javascript">
+function hit()
+{
+function createCookie(nom,valeur,exdays)
+{
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = nom+"="+valeur+"; "+expires;
+}
+
+function getCookie(nom)
+{
+var name = nom + "=";
+var allcookies = document.cookie.split(';');
+for(var i=0; i<allcookies.length; i++)
+  {
+  var c = allcookies[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+var PlayerLife = getCookie("life");
+var damages = ?
+var PlayerLife = PLayerLife - damages
+createCookie("life", PlayerLife,30);
+}
