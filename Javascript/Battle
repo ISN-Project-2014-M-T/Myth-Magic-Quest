@@ -179,14 +179,15 @@ while(pv>0 && PlayerLife>0)
     }
     if (choice == 2)
     {
-        if (attempt = 2 && PlayerLife<lifemax)
+        if (attempt == 2)
         {
             var PlayerLife = PlayerLife + 1000;
-            if(Playerlife>lifemax)
+            if(PlayerLife>lifemax)
             {
                 var PlayerLife = lifemax;
             }
             alert("Vous vous êtes soigné");
+            alert(Joueur + " : " + PlayerLife + " pv" + " Ennemi : " + pv + " pv");
         }
         else 
         {
@@ -201,12 +202,14 @@ while(pv>0 && PlayerLife>0)
         else if(crit2 == 1)
         {
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
         }
         else if(crit2 == 5)
         {
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
         }
-        var PlayerLife = result1;
+
     }
     else if (choice == 1)
     {
@@ -228,24 +231,27 @@ while(pv>0 && PlayerLife>0)
         {
             alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
         }
         else if(crit1 == 5 && crit2 == 5)
         {
             alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total + " Coup Critique!!!");
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
         }
         else if(crit1 == 5)
         {
             alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total + " Coup Critique!!!");
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
         }
         else if(crit2 == 5)
         {
             alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
             alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
         }
         var pv = result2;
-        var PlayerLife = result1;
     }
     if(pv <= 0)
     {
