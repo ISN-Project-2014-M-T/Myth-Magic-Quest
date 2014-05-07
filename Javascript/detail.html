@@ -1,0 +1,425 @@
+<html lang="fr"><head>
+
+    {% load staticfiles %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Endless Game Quest | Part of Story">
+    <meta name="author" content="Corentin Mors">
+    <link rel="shortcut icon" href="{% static 'quest/icon.ico' %}">
+
+    <title>{{ stage.name }} | Endless Quest</title>
+
+    <!-- Bootstrap Framework CSS -->
+    <link href="{% static 'quest/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Importer la feuille de style personnalisée -->
+    <link rel="stylesheet" type="text/css" href="{% static 'quest/custom.css' %}" />
+
+    <!-- Police d'icônes -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim et Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Permet d'utiliser le css sur les version de Internet Explorer antérieures à IE9 -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style type="text/css"></style><style id="holderjs-style" type="text/css"></style>
+
+
+
+  </head>
+
+  <body onload="verif()">
+
+        <script type="text/javascript">
+
+function verif(){
+var ActualLife = getCookie("life");
+var potion = getCookie("item");
+var classe = getCookie("job");
+var PlayerLife = parseInt(ActualLife) + parseInt({{ stage.gain }}) - parseInt({{ stage.perte }});
+
+function createCookie(nom,valeur,exdays)
+{
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = nom+"="+valeur+"; "+expires + ";path=/quest";
+}
+
+function getCookie(nom)
+{
+var name = nom + "=";
+var allcookies = document.cookie.split(';');
+for(var i=0; i<allcookies.length; i++)
+  {
+  var c = allcookies[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+
+
+if (classe == "mage")
+{
+    var lifemax = 5000;
+}
+else if (classe == "warrior")
+{
+    var lifemax = 10000;
+}
+else if (classe == "thief")
+{
+    var lifemax = 5000;
+}
+
+        if(PlayerLife < 1)
+        {
+            var PlayerLife = 0;
+            alert("Vous êtes mort...");
+            if (potion>0)
+            {
+                if (confirm("Voulez-vous utiliser un continue?"))
+                {
+                    var PlayerLife = lifemax;
+                    var potion = parseInt(potion) - 1;
+                }
+                else
+                {
+                    alert("GAME OVER");
+                }
+        }
+        }
+createCookie("life", PlayerLife,30);
+createCookie("item", potion,30);
+}
+
+</script>
+
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Endless Game Quest</h3>
+              <ul class="nav masthead-nav">
+                <li><a href="http://pixelswap.fr/endless/">Accueil</a></li>
+                <li class="active"><a href="">Histoire</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="inner cover">
+
+            <h1 class="cover-heading">{{ stage.name }}</h1>
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>{{ stage.history }}</p>
+
+
+<BR>
+
+{% for monster in stage.monster_set.all %}
+{% if monster.name|length > 1 %}
+
+
+
+<p class="lead">Oh un {{ monster.name }} apparait et semble vous barrer la route !</p>
+
+<a class="btn btn-lg btn-default" onclick="javascript:Combat()"> Lancer le combat</a>
+
+
+<!-- Système de Combat -->
+<script type="text/javascript">
+
+function Combat()
+{
+
+function createCookie(nom,valeur,exdays)
+{
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = nom+"="+valeur+"; "+expires + ";path=/quest";
+}
+
+function getCookie(nom)
+{
+var name = nom + "=";
+var allcookies = document.cookie.split(';');
+for(var i=0; i<allcookies.length; i++)
+  {
+  var c = allcookies[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+
+function fail(escape)
+{
+    var chance = 0;
+    if  (escape == 2)
+    {
+        var e = Math.floor((Math.random() * 5) + 1);
+        if (e == 3)
+        {
+            var chance = 1
+        }
+
+    }
+    else if (escape == 1)
+    {
+        var e = Math.floor((Math.random() * 10) + 1);
+        if (e == 3)
+        {
+            var chance = 1;
+        }
+    }
+    return chance
+}
+
+
+function Critical()
+{
+    var h = Math.floor((Math.random() * 10) + 1);
+    var ulti = 1;
+    if (h==7)
+    {
+        var ulti = 5;
+    }
+    return ulti
+}
+
+function De()
+{
+    var random = Math.floor((Math.random() * 6) + 1);
+
+    return random
+}
+
+function Level(zone)
+{
+    var n='{{ monster.name }}';
+    var v={{ monster.life }};
+    var t={{ monster.taux }}*0.01;
+    return[n, v, t];
+}
+var Joueur = getCookie("username");
+var classe = getCookie("job");
+var PlayerLife = getCookie("life");
+var potion = getCookie("item");
+var zone = getCookie("lieu");
+var weapon = getCookie("arme")
+var Enemy = Level(zone);
+var pv = Enemy[1];
+if (classe == "mage")
+{
+    var power = 2;
+    var escape = 1;
+    var lifemax = 5000;
+}
+else if (classe == "warrior")
+{
+    var power = 1;
+    var escape = 1;
+    var lifemax = 10000;
+}
+else if (classe == "thief")
+{
+    var power = 1;
+    var escape = 2;
+    var lifemax = 5000;
+}
+if (weapon == 1)
+{
+    var power = power*5;
+}
+while(pv>0 && PlayerLife>0)
+{
+    var a = De();
+    var b = De();
+    var c = De();
+    var crit1 = Critical();
+    var x = De();
+    var y = De();
+    var z = De();
+    var crit2 = Critical();
+    alert(Joueur + " : " + PlayerLife + " pv" + "         Ennemi : " + pv + " pv");
+    var dodge = fail(escape);
+    var choice = 0;
+    var attempt = Math.floor((Math.random() * 5) + 1);
+    while (choice!=1 && choice!=2)
+    {
+        var choice = prompt("Voulez-vous attaquer ou vous soigner?(1=attaquer, 2=soigner)");
+    }
+    if (choice == 2)
+    {
+        if (attempt == 2)
+        {
+            var PlayerLife = PlayerLife + 1000;
+            if(PlayerLife>lifemax)
+            {
+                var PlayerLife = lifemax;
+            }
+            alert("Vous vous êtes soigné");
+            alert(Joueur + " : " + PlayerLife + " pv" + " Ennemi : " + pv + " pv");
+        }
+        else
+        {
+        alert("Votre soin à échoué");
+        }
+        var total2 = (x+y+z)*10*Enemy[2]*crit2;
+        var result1 = PlayerLife - total2;
+        if (dodge == 1)
+        {
+            alert("Vous avez évité l'attaque ennemie!!!");
+        }
+        else if(crit2 == 1)
+        {
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
+        }
+        else if(crit2 == 5)
+        {
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
+        }
+
+    }
+    else if (choice == 1)
+    {
+        var total = (a+b+c)*10*crit1*power;
+        var total2 = (x+y+z)*10*Enemy[2]*crit2;
+        var result1 = PlayerLife - total2;
+        var result2 = pv - total;
+        if (dodge == 1 && crit1 == 1)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
+            alert("Vous avez évité l'attaque ennemie!!!");
+        }
+        else if (dodge == 1 && crit1 == 5)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total + " Coup Critique!!!");
+            alert("Vous avez évité l'attaque ennemie!!!");
+        }
+        else if(crit1 == 1 && crit2 == 1)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
+        }
+        else if(crit1 == 5 && crit2 == 5)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total + " Coup Critique!!!");
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
+        }
+        else if(crit1 == 5)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total + " Coup Critique!!!");
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2);
+            var PlayerLife = result1;
+        }
+        else if(crit2 == 5)
+        {
+            alert("Dommages infligés : " + a + " " + b + " " + c + " => " + total);
+            alert("Dommages reçus : " + x + " " + y + " " + z + " => " + total2 + " Coup Critique!!!");
+            var PlayerLife = result1;
+        }
+        var pv = result2;
+    }
+    if(pv <= 0)
+    {
+        var pv = 0;
+        alert(Joueur + " : " + PlayerLife + "         Ennemi : " + pv + " pv");
+        alert("Vous avez gagné!");
+    }
+    else if(PlayerLife <= 0)
+    {
+        var PlayerLife = 0;
+        alert(Joueur + " : " + PlayerLife + "         Ennemi : " + pv + " pv");
+        alert("Vous êtes mort...");
+        if (potion>0)
+        {
+            if (confirm("Voulez-vous utiliser un continue?"))
+            {
+                var PlayerLife = lifemax;
+                var potion = potion - 1;
+            }
+            else
+            {
+                alert("GAME OVER");
+            }
+        }
+        else
+        {
+            alert("GAME OVER")
+        }
+    }
+}
+    createCookie("username", Joueur,30);
+    createCookie("life", PlayerLife,30);
+    createCookie("job", classe,30);
+    createCookie("item", potion,30);
+    createCookie("arme",weapon,30);
+}
+</script>
+
+
+{% else %}
+
+
+<h3>{{ stage.question }}</h3>
+
+
+
+<div class="btn-group">
+
+{% for choice in stage.choice_set.all %}
+<button type="button" class="btn btn-default" onclick="location.href='../{{ choice.redirection }}';"> {{ choice.proposition }}</button>
+{% endfor %}
+</div>
+
+
+{% endif %}
+{% endfor %}
+
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Made with <i class="fa fa-heart"></i> in Vichy</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap JavaScript
+    ================================================== -->
+    <!-- Placé à la fin du document pour un chargement plus rapide -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% static 'quest/bootstrap.min.js' %}"></script>
+
+    <!-- Complément pour le javascript (inutilisé) -->
+    <!--   <script src="{% static 'quest/docs.min.js' %}"></script> -->
+
+
+
+</body></html>
