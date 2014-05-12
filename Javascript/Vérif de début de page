@@ -1,5 +1,7 @@
 Vérification de la vie en début de page
 ---------------------------------------
+<html>
+
 <head>
 
 <script type="text/javascript">
@@ -72,3 +74,4 @@ createCookie("job", classe,30);
 </head>
     <body onload="javascript:Verif()">
     </body>
+</html>
