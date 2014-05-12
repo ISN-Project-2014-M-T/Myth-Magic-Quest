@@ -63,6 +63,7 @@ else if (classe == "thief")
                 {
                     alert("GAME OVER");
                 }
+            }
         }
 createCookie("life", PLayerLife,30);
 createCookie("item", potion,30);
