@@ -42,6 +42,10 @@ else if (classe == "thief")
 {
     var lifemax = 5000;
 }
+        if (PlayerLife > lifemax)
+        {
+        var PlayerLife = lifemax
+        }
         if(PlayerLife <= 0)
         {
             var PlayerLife = 0;
